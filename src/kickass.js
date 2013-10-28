@@ -52,7 +52,6 @@ function search(term, opts, callback) {
 
 function requestPage(term, startPage, page, req, result, callback) {
     var url = "http://kickass.to/usearch/" + term + "/" + (startPage + page) + "/?" + querystring.stringify(req);
-    console.log(url);
     
     sc.get(url, {
         parse: xml2js.parseString,
