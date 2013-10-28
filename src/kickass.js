@@ -14,7 +14,8 @@ function search(term, opts, callback) {
     
     var defaultOpts = {
         sort: "seeders",
-        page: 1
+        page: 1,
+        totalPages: 1
     };
     opts = defaultify(opts, defaultOpts, true).value;
     
@@ -24,10 +25,47 @@ function search(term, opts, callback) {
         sorder: "desc"
     };
     
-    sc.get("http://kickass.to/usearch/" + term + "/" + opts.page + "/?" + querystring.stringify(req), {
+    var resultList = [];
+    var want = opts.totalPages;
+    for (var i = 0; i < opts.totalPages; ++i) {
+        requestPage(term, opts.page, i, req, resultList, function(err, data) {
+            if (want === 0) return;
+            
+            if (err) {
+                callback(err);
+                want = 0;
+            } else {
+                if (--want == 0) {
+                    var obj = {
+                        title: resultList[0].title,
+                        items: resultList[0].items
+                    };
+                    for (i = 1; i < opts.totalPages; i++) {
+                        obj.items = obj.items.concat(resultList[i].items);
+                    }
+                    callback(null, obj);
+                }
+            }
+        });
+    }
+}
+
+function requestPage(term, startPage, page, req, result, callback) {
+    var url = "http://kickass.to/usearch/" + term + "/" + (startPage + page) + "/?" + querystring.stringify(req);
+    console.log(url);
+    
+    sc.get(url, {
         parse: xml2js.parseString,
         transform: transformRss
-    }, callback);
+    },
+    function(err, data) {
+        if (err) {
+            callback(err);
+        } else {
+            result[page] = data;
+            callback(null);
+        }
+    });
 }
 
 

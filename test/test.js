@@ -1,6 +1,6 @@
 var kickass = require("../");
 
-kickass.search("ubuntu", function(err, data) {
+kickass.search("ubuntu", {totalPages: 3}, function(err, data) {
     if (err) {
         console.log(err);
     } else {
