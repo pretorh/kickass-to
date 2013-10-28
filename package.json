@@ -1,0 +1,26 @@
+{
+  "name": "kickass-to",
+  "version": "0.0.0",
+  "description": "kickass.to search api",
+  "main": "index",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pretorh/kickass-to.git"
+  },
+  "keywords": [
+    "kickass",
+    "torrent",
+    "api"
+  ],
+  "author": "Hendri Pretorius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pretorh/kickass-to/issues"
+  },
+  "directories": {
+    "test": "test"
+  }
+}

@@ -1,8 +1,8 @@
+module.exports.search = get;
+
 var xml2js = require("xml2js"),
     sc = require("service-client"),
     util = require("util");
-
-var first = true;
 
 function get(term, callback) {
     sc.get("http://kickass.to/usearch/" + term + "/?rss=1", {
