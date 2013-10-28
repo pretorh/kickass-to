@@ -1,10 +1,10 @@
-module.exports.search = get;
+module.exports.search = search;
 
 var xml2js = require("xml2js"),
     sc = require("service-client"),
     util = require("util");
 
-function get(term, callback) {
+function search(term, callback) {
     sc.get("http://kickass.to/usearch/" + term + "/?rss=1", {
         parse: xml2js.parseString,
         transform: transformRss
@@ -24,7 +24,7 @@ function transformRss(data, callback) {
 
 function transformChanel(data, callback) {
     var obj = {
-        title: data.description,
+        title: data.description[0],
         items: []
     };
     
@@ -36,29 +36,25 @@ function transformChanel(data, callback) {
 }
 
 function transformItem(item) {
-    var res = {};
-    
-    mapInto(res, item, "title");
-    mapInto(res, item, "category");
-    mapInto(res, item, "author");
-    mapInto(res, item, "link");
-    mapInto(res, item, "pubDate");
-    mapInto(res, item, "torrent:contentLength'");
-    mapInto(res, item, "torrent:infoHash'");
-    mapInto(res, item, "torrent:magnetURI'");
-    mapInto(res, item, "torrent:seeds'");
-    mapInto(res, item, "torrent:peers'");
-    mapInto(res, item, "torrent:verified'");
-    mapInto(res, item, "torrent:fileName'");
-    mapInto(res, item, "enclosure");
-    
-    return res;
+    return {
+        title: mapArray(item.title),
+        category: mapArray(item.category),
+        author: mapArray(item.author),
+        link: mapArray(item.link),
+        date: new Date(mapArray(item.pubDate)),
+        size: parseInt(mapArray(item["torrent:contentLength"])),
+        infohash: mapArray(item["torrent:infoHash"]),
+        magnet: mapArray(item["torrent:magnetURI"]),
+        seeds: parseInt(mapArray(item["torrent:seeds"])),
+        peers: parseInt(mapArray(item["torrent:peers"])),
+        verified: mapArray(item["torrent:verified"]) === "1",
+        filename: mapArray(item["torrent:fileName"]),
+        url: mapArray(item.enclosure)["$"].url
+    };
 }
 
-function mapInto(into, from, field) {
-    if (from && from[field]) {
-        into[field] = from[field][0];
-    } else {
-        into[field] = undefined;
+function mapArray(field) {
+    if (field) {
+        return field[0];
     }
 }
