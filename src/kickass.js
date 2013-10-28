@@ -1,11 +1,30 @@
 module.exports.search = search;
 
 var xml2js = require("xml2js"),
+    defaultify = require("defaultify"),
     sc = require("service-client"),
-    util = require("util");
+    util = require("util"),
+    querystring = require("querystring");
 
-function search(term, callback) {
-    sc.get("http://kickass.to/usearch/" + term + "/?rss=1", {
+function search(term, opts, callback) {
+    if (arguments.length === 2 && typeof(opts) === "function") {
+        callback = opts;
+        opts = {};
+    }
+    
+    var defaultOpts = {
+        sort: "seeders",
+        page: 1
+    };
+    opts = defaultify(opts, defaultOpts, true).value;
+    
+    var req = {
+        rss: 1,
+        field: opts.sort,
+        sorder: "desc"
+    };
+    
+    sc.get("http://kickass.to/usearch/" + term + "/" + opts.page + "/?" + querystring.stringify(req), {
         parse: xml2js.parseString,
         transform: transformRss
     }, callback);
