@@ -1,10 +1,13 @@
 module.exports.search = search;
+module.exports.download = download;
 
 var xml2js = require("xml2js"),
     defaultify = require("defaultify"),
     sc = require("service-client"),
     util = require("util"),
-    querystring = require("querystring");
+    querystring = require("querystring"),
+    path = require("path"),
+    fs = require("fs");
 
 function search(term, opts, callback) {
     if (arguments.length === 2 && typeof(opts) === "function") {
@@ -48,6 +51,26 @@ function search(term, opts, callback) {
             }
         });
     }
+}
+
+function download(result, saveTo, callback) {
+    var url = result.url.match(/(.*)\?title=.*$/);
+    url = url ? url[1] : result.url;
+    
+    var full = path.join(saveTo, result.filename);
+    sc.get(url, {}, function(err, data) {
+        if (err) {
+            callback(err);
+        } else {
+            fs.writeFile(full, data, function(ferr) {
+                if (ferr) {
+                    callback(ferr);
+                } else {
+                    callback(null, full);
+                }
+            });
+        }
+    });
 }
 
 function requestPage(term, startPage, page, req, result, callback) {
