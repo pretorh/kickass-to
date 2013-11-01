@@ -94,8 +94,8 @@ function transformChanel(data, callback) {
 function transformItem(item) {
     return {
         title: mapArray(item.title),
-        category: mapArray(item.category),
-        author: mapArray(item.author),
+        category: mapCategory(mapArray(item.category)),
+        author: mapAuthor(mapArray(item.author)),
         link: mapArray(item.link),
         date: new Date(mapArray(item.pubDate)),
         size: parseInt(mapArray(item["torrent:contentLength"])),
@@ -113,4 +113,19 @@ function mapArray(field) {
     if (field) {
         return field[0];
     }
+}
+
+function mapCategory(categoryStr) {
+    return {
+        raw: categoryStr,
+        path: categoryStr.split(" > ")
+    };
+}
+
+function mapAuthor(authorLink) {
+    var uname = authorLink && authorLink.match(/http:\/\/kickass.to\/user\/(.+)\//);
+    return {
+        name: uname ? uname[1] : undefined,
+        link: authorLink
+    };
 }
