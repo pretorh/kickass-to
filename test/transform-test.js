@@ -24,11 +24,11 @@ vows.describe("transformation").addBatch({
                 assert.isDefined(result);
                 assert.isDefined(result.title);
             },
-            "*items* is an array of 2 items": function(err, result) {
+            "*items* is an array of *2* items": function(err, result) {
                 assert.isArray(result.items);
                 assert.equal(result.items.length, 2);
             },
-            "the first item is for *ubuntu 13.10 server amd64.iso*": itemMatches(0, {
+            "and the first item is for *ubuntu 13.10 server amd64.iso*": itemMatches(0, {
                 title: "ubuntu 13.10 server amd64.iso",
                 category: {
                     raw: "Applications > UNIX",
@@ -47,7 +47,7 @@ vows.describe("transformation").addBatch({
                 filename: "ubuntu.13.10.server.amd64.iso.torrent",
                 url: "http://torcache.net/torrent/6A36DE201DF2F1B2C817474C3075FF0EAA8C7785.torrent?title=[kickass.to]ubuntu.13.10.server.amd64.iso"
             }),
-            "the second item is for *ubuntu 11-04...*": itemMatches(1, {
+            "and the second item is for *ubuntu 11-04...*": itemMatches(1, {
                 title: "ubuntu 11.04 desktop i386 fr.iso",
                 category: {
                     raw: "Applications",

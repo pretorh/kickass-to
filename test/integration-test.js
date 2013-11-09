@@ -5,7 +5,7 @@ var vows = require("vows"),
 vows.describe("integration test").addBatch({
     "when searching for *ubuntu*": {
         topic: function() {
-            kickass.search("ubuntu", {totalPages: 3}, this.callback); 
+            kickass.search("ubuntu", {totalPages: 3}, this.callback);
         },
         "no errors occured": function(err, data) {
             assert.isNull(err);
@@ -18,11 +18,6 @@ vows.describe("integration test").addBatch({
         "*at least one* item is returned": function(err, data) {
             assert.isArray(data.items);
             assert(data.items.length > 0);
-        },
-        "the items have specific *fields*": function(err, data) {
-            for (var i = 0; i < data.items.length; ++i) {
-                haveFields(data.items[i]);
-            }
         },
         "the torrent can be downloaded": {
             topic: function(data) {
@@ -45,24 +40,12 @@ vows.describe("integration test").addBatch({
                 assert.isNotNull(info);
                 assert.isNotNull(info.path);
                 assert.equal(info.path, info.item.filename);
-                require("fs").unlink(info.path);
+            },
+            "(perform cleanup)": function(err, info) {
+                if (!err) {
+                    require("fs").unlink(info.path);
+                }
             }
         }
     }
 }).export(module);
-
-function haveFields(item) {
-    assert.isDefined(item.title);
-    assert.isDefined(item.category);
-    assert.isDefined(item.author);
-    assert.isDefined(item.link);
-    assert.isDefined(item.date);
-    assert.isDefined(item.size);
-    assert.isDefined(item.infohash);
-    assert.isDefined(item.magnet);
-    assert.isDefined(item.seeds);
-    assert.isDefined(item.peers);
-    assert.isDefined(item.verified);
-    assert.isDefined(item.filename);
-    assert.isDefined(item.url);
-}
