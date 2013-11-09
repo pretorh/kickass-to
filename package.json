@@ -4,7 +4,7 @@
   "description": "kickass.to search api",
   "main": "index.js",
   "scripts": {
-    "test": "vows"
+    "test": "vows && vows test/integration.js"
   },
   "repository": {
     "type": "git",
