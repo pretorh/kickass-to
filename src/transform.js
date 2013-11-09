@@ -15,11 +15,11 @@ function transformChanel(data, callback) {
         title: data.description[0],
         items: []
     };
-    
+
     for (var i = 0; i < data.item.length; ++i) {
         obj.items[i] = transformItem(data.item[i]);
     }
-    
+
     callback(null, obj);
 }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:torrent="http://xmlns.ezrss.it/0.1/">
+<channel>
+    <title>Torrents by keyword "ubuntu" - KickassTorrents</title>
+    <link>http://kickass.to/</link>
+    <description>Torrents by keyword "ubuntu"</description>
+    <item>
+        <title>ubuntu 13.10 server amd64.iso</title>
+      <description><![CDATA[Ubuntu 13.10 (Saucy Salamander)]]></description>
+        <category>Applications > UNIX</category>
+      <author>http://kickass.to/user/mr_madness/</author>        <link>http://kickass.to/ubuntu-13-10-server-amd64-iso-t8031238.html</link>
+        <guid>http://kickass.to/ubuntu-13-10-server-amd64-iso-t8031238.html</guid>
+        <pubDate>Fri, 18 Oct 2013 00:56:25 +0000</pubDate>
+        <torrent:contentLength>704643072</torrent:contentLength>
+        <torrent:infoHash>6A36DE201DF2F1B2C817474C3075FF0EAA8C7785</torrent:infoHash>
+        <torrent:magnetURI><![CDATA[magnet:?xt=urn:btih:6A36DE201DF2F1B2C817474C3075FF0EAA8C7785&dn=ubuntu+13+10+server+amd64+iso&tr=http%3A%2F%2Fipv6.torrent.ubuntu.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337]]></torrent:magnetURI>
+        <torrent:seeds>560</torrent:seeds>
+        <torrent:peers>570</torrent:peers>
+        <torrent:verified>0</torrent:verified>
+        <torrent:fileName>ubuntu.13.10.server.amd64.iso.torrent</torrent:fileName>
+        <enclosure url="http://torcache.net/torrent/6A36DE201DF2F1B2C817474C3075FF0EAA8C7785.torrent?title=[kickass.to]ubuntu.13.10.server.amd64.iso" length="704643072" type="application/x-bittorrent" />
+    </item>
+    <item>
+        <title>ubuntu 11.04 desktop i386 fr.iso</title>
+      <description><![CDATA[[center]Ubuntu 11.04 (nom de code : The Natty Narwhal) est la quatorzième version d&#039;Ubuntu. Son développement s&#039;est échelonné sur six mois, jusqu&#039;à sa publication en tant que version stable le 28 avril 2011. Elle profitera de mises à jour de sécurité pendant une durée de 18 mois, soit jusqu&#039;en octobre 2012.
+14 personnes ont remercié l&#039;uploadeur pour ce Torrent :
+manudiabolo, poumba42, basquinette, lev39, ganja310174, legrand98, aminus26, alonzi, finger26, julienbazard, papazen38, gco, onclesam81, antonio37
+Remercier
+
+Telecharger Ubuntu 11 04 i386,Telecharger Ubuntu 11.04 i386 ,Telecharger Ubuntu 11 04 i386 torrent,Ubuntu 11 04 i386 torrent[/center]]]></description>
+        <category>Applications</category>
+      <author>http://kickass.to/user/Qazew/</author>        <link>http://kickass.to/ubuntu-11-04-desktop-i386-fr-iso-t8031118.html</link>
+        <guid>http://kickass.to/ubuntu-11-04-desktop-i386-fr-iso-t8031118.html</guid>
+        <pubDate>Fri, 18 Oct 2013 00:11:05 +0000</pubDate>
+        <torrent:contentLength>674670592</torrent:contentLength>
+        <torrent:infoHash>B2F6CD76F4DD68E02908F009E91C7F82B9D6E756</torrent:infoHash>
+        <torrent:magnetURI><![CDATA[magnet:?xt=urn:btih:B2F6CD76F4DD68E02908F009E91C7F82B9D6E756&dn=ubuntu+11+04+desktop+i386+fr+iso&tr=udp%3A%2F%2Ffr33domtracker.h33t.com%3A3310%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337]]></torrent:magnetURI>
+        <torrent:seeds>0</torrent:seeds>
+        <torrent:peers>0</torrent:peers>
+        <torrent:verified>0</torrent:verified>
+        <torrent:fileName>ubuntu.11.04.desktop.i386.fr.iso.torrent</torrent:fileName>
+        <enclosure url="http://torcache.net/torrent/B2F6CD76F4DD68E02908F009E91C7F82B9D6E756.torrent?title=[kickass.to]ubuntu.11.04.desktop.i386.fr.iso" length="674670592" type="application/x-bittorrent" />
+    </item>
+    </channel>
+</rss>
