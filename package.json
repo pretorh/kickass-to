@@ -4,7 +4,7 @@
   "description": "kickass.to search api",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "vows"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "xml2js": "~0.2.8",
     "defaultify": "0.0.3",
     "service-client": "0.0.1"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
   }
 }
